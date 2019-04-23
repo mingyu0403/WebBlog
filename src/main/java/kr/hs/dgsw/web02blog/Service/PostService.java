@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PostService {
     List<PostUsernameProtocol> getAllPosts();
+    Post getUserRecentPost(Long userId);
     PostUsernameProtocol getPost(Long postId);
     PostUsernameProtocol addPost(Post post);
     PostUsernameProtocol updatePost(Post post);

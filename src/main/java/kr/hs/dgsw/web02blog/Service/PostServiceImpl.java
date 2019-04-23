@@ -37,9 +37,16 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostUsernameProtocol getPost(Long commentId) {
+    public Post getUserRecentPost(Long userId) {
+        return this.postRepository
+                .findTopByUserIdOrderByIdDesc(userId)
+                .orElse(null);
+    }
+
+    @Override
+    public PostUsernameProtocol getPost(Long postId) {
         PostUsernameProtocol pup = null;
-        Optional<Post> post = this.postRepository.findById(commentId);
+        Optional<Post> post = this.postRepository.findById(postId);
         if(post.isPresent()){
             Optional<User> user = this.userRepository.findById(post.get().getId());
             if(user.isPresent()){
@@ -67,8 +74,6 @@ public class PostServiceImpl implements PostService {
                 .map( p -> {
                     p.setUserId(Optional.ofNullable(post.getUserId()).orElse(p.getUserId()));
                     p.setContent(Optional.ofNullable(post.getContent()).orElse(p.getContent()));
-                    p.setImagePath(Optional.ofNullable(post.getImagePath()).orElse(p.getImagePath()));
-                    p.setImageName(Optional.ofNullable(post.getImageName()).orElse(p.getImageName()));
                     return this.postRepository.save(p);
                 })
                 .orElse(null);
@@ -81,9 +86,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public boolean deletePost(Long commentId) {
+    public boolean deletePost(Long postId) {
         try {
-            this.postRepository.deleteById(commentId);
+            this.postRepository.deleteById(postId);
             return true;
         } catch (Exception e){
             return false;
