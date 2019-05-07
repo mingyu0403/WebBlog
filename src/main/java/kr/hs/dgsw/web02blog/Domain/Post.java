@@ -40,10 +40,17 @@ public class Post {
     private LocalDateTime modified;
 
 
+    // 서버 시작 시 만들어놓기 위해 필수 데이터들로만 생성
+    public Post(Long userId, String title, String content){
+        this.userId = userId;
+        this.title = title;
+        this.content = content;
+    }
 
     public Post(Post p){
         this.id = p.getId();
         this.userId = p.getUserId();
+        this.title = p.getTitle();
         this.content = p.getContent();
         this.created = p.getCreated();
         this.modified = p.getModified();

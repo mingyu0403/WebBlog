@@ -7,13 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 
 @Entity
@@ -64,5 +59,11 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime modified;
 
+    // 서버 시작 시 만들어놓기 위해 필수 데이터들로만 생성
+    public User(String account, String password, String name){
+        this.account = account;
+        this.password = password;
+        this.name = name;
+    }
 
 }

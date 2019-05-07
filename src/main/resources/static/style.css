@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+}
+
+.container {
+    position: fixed;
+}
+
+header {
+    height: 110px;
+    left: 0;
+    right: 0;
+    background-color: aquamarine;
+}
+
+aside.left-container {
+    top: 110px;
+    bottom: 100px;
+    left: 0;
+    width: 200px;
+    background-color: blue;
+
+}
+
+aside.right-container {
+    top: 110px;
+    bottom: 100px;
+    right: 0;
+    width: 200px;
+    background-color: bisque;
+    text-align: center;
+}
+
+section#main-container {
+    top: 110px;
+    bottom: 100px;
+    left: 200px;
+    right: 200px;
+    background-color: white;
+    padding: 10px;
+}
+
+/*
+게시글 제목
+ */
+#display-post-title {
+    font-size: 15pt;
+}
+
+/*
+게시글 정보
+ */
+#display-info {
+    display: flex;
+}
+#display-post-username{
+    flex: 1;
+    font-size: 10pt;
+    text-align: left;
+}
+#display-post-createdTime{
+    flex: 1;
+    font-size: 10pt;
+    text-align: right;
+}
+
+/*
+게시글 내용
+ */
+#display-post-content {
+    font-size: 10pt;
+    text-align: justify;
+    background-color: bisque;
+    height: 70%;
+    overflow-y: auto;
+}
+
+footer {
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: blueviolet;
+}
+
+.title {
+    margin: 0;
+    line-height: 110px;
+}
+/*
+게시글 수정, 삭제
+ */
+#display-setting{
+    text-align: center;
+}
